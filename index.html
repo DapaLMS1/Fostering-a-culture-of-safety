@@ -21,10 +21,15 @@
     .culture-card {
       position: relative;
       background: #F8FAFC;
-      height: 190px; /* Reduced container height */
+      height: 165px; /* Reduced container height as requested */
       overflow: hidden;
       border: 1px solid #E2E8F0;
       cursor: pointer;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .culture-card:hover {
+      box-shadow: 0 4px 12px rgba(83, 42, 140, 0.08);
     }
 
     /* The sliding cover */
@@ -42,7 +47,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 1.25rem;
+      padding: 1rem;
       transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -61,18 +66,21 @@
       background-color: #FFFFFF;
     }
 
-    /* Hover Interaction: Cover slides down */
-    .culture-card:hover .card-cover {
+    /* Interaction: Cover slides down */
+    .culture-card:hover .card-cover,
+    .culture-card.is-active .card-cover {
       transform: translateY(100%);
     }
 
-    /* Custom Scrollbar for reveal content if needed */
-    .card-reveal p::-webkit-scrollbar {
-      width: 4px;
+    /* Adjusting specific font sizes */
+    .intro-text {
+      font-size: 15px; /* Reduced from previous larger size */
+      line-height: 1.6;
     }
-    .card-reveal p::-webkit-scrollbar-thumb {
-      background: #C3ACE8;
-      border-radius: 10px;
+
+    .reveal-p {
+      font-size: 15px; /* Increased from small to be more readable */
+      line-height: 1.5;
     }
   </style>
 </head>
@@ -81,90 +89,104 @@
   <div class="w-full max-w-7xl mx-auto">
     
     <!-- Title Section -->
-    <header class="mb-8 border-b border-slate-100 pb-6">
+    <header class="mb-6 border-b border-slate-100 pb-6">
       <h2 class="text-2xl font-bold text-slate-900 mb-3">Fostering a Culture of Safety</h2>
-      <p class="text-base text-slate-600 max-w-4xl leading-relaxed">
+      <p class="intro-text text-slate-600 max-w-4xl">
         Effective communication is the cornerstone of a safe and productive dental practice, focusing on building trust, fostering collaboration, and cultivating a shared commitment to safety.
       </p>
+      <!-- Refined Instructional Text -->
+      <p class="text-[13px] font-bold text-[#532A8C] mt-4 uppercase tracking-wider">Select a tile below to learn more</p>
     </header>
 
     <!-- Interactive Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       
       <!-- Leadership Commitment -->
-      <div class="culture-card rounded-xl group">
+      <div class="culture-card rounded-xl group" onclick="toggleCard(this)">
         <div class="card-cover">
-          <svg class="w-8 h-8 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-          <h4 class="font-bold text-sm uppercase tracking-wider">Leadership Commitment</h4>
+          <svg class="w-7 h-7 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          <h4 class="font-bold text-[13px] uppercase tracking-wider px-2">Leadership Commitment</h4>
         </div>
         <div class="card-reveal">
-          <h4 class="font-bold text-[#532A8C] text-xs uppercase mb-2">Leadership Commitment</h4>
-          <p class="text-sm md:text-base leading-snug text-slate-600">Leaders must set the tone by demonstrating genuine commitment to safety, consistently adhering to protocols, and encouraging others.</p>
+          <h4 class="font-bold text-[#532A8C] text-[11px] uppercase mb-1 tracking-tight">Leadership Commitment</h4>
+          <p class="reveal-p text-slate-600">Leaders must set the tone by demonstrating genuine commitment to safety, consistently adhering to protocols, and encouraging others.</p>
         </div>
       </div>
 
       <!-- Building Trust & Respect -->
-      <div class="culture-card rounded-xl group">
+      <div class="culture-card rounded-xl group" onclick="toggleCard(this)">
         <div class="card-cover">
-          <svg class="w-8 h-8 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-          <h4 class="font-bold text-sm uppercase tracking-wider">Trust & Respect</h4>
+          <svg class="w-7 h-7 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <h4 class="font-bold text-[13px] uppercase tracking-wider px-2">Trust & Respect</h4>
         </div>
         <div class="card-reveal">
-          <h4 class="font-bold text-[#532A8C] text-xs uppercase mb-2">Building Trust & Respect</h4>
-          <p class="text-sm md:text-base leading-snug text-slate-600">Treating everyone with respect ensures team members feel safe raising concerns. This requires transparency, honesty, and prompt follow-through.</p>
+          <h4 class="font-bold text-[#532A8C] text-[11px] uppercase mb-1 tracking-tight">Building Trust & Respect</h4>
+          <p class="reveal-p text-slate-600">Treating everyone with respect ensures team members feel safe raising concerns. This requires transparency, honesty, and prompt follow-through.</p>
         </div>
       </div>
 
       <!-- Safety Behaviours -->
-      <div class="culture-card rounded-xl group">
+      <div class="culture-card rounded-xl group" onclick="toggleCard(this)">
         <div class="card-cover">
-          <svg class="w-8 h-8 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <h4 class="font-bold text-sm uppercase tracking-wider">Safety Behaviours</h4>
+          <svg class="w-7 h-7 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <h4 class="font-bold text-[13px] uppercase tracking-wider px-2">Safety Behaviours</h4>
         </div>
         <div class="card-reveal">
-          <h4 class="font-bold text-[#532A8C] text-xs uppercase mb-2">Embedding Behaviours</h4>
-          <p class="text-sm md:text-base leading-snug text-slate-600">Reinforce positive practices, recognise safe actions, and provide constructive feedback for continuous improvement across the team.</p>
+          <h4 class="font-bold text-[#532A8C] text-[11px] uppercase mb-1 tracking-tight">Embedding Behaviours</h4>
+          <p class="reveal-p text-slate-600">Reinforce positive practices, recognise safe actions, and provide constructive feedback for continuous improvement across the team.</p>
         </div>
       </div>
 
       <!-- Risk Management -->
-      <div class="culture-card rounded-xl group">
+      <div class="culture-card rounded-xl group" onclick="toggleCard(this)">
         <div class="card-cover">
-          <svg class="w-8 h-8 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-          <h4 class="font-bold text-sm uppercase tracking-wider">Staff Engagement</h4>
+          <svg class="w-7 h-7 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+          <h4 class="font-bold text-[13px] uppercase tracking-wider px-2">Staff Engagement</h4>
         </div>
         <div class="card-reveal">
-          <h4 class="font-bold text-[#532A8C] text-xs uppercase mb-2">Engaging Staff in Risk</h4>
-          <p class="text-sm md:text-base leading-snug text-slate-600">Encourage active participation in hazard identification and risk assessment. Empower staff to take ownership of safety procedures.</p>
+          <h4 class="font-bold text-[#532A8C] text-[11px] uppercase mb-1 tracking-tight">Engaging Staff in Risk</h4>
+          <p class="reveal-p text-slate-600">Encourage active participation in hazard identification and risk assessment. Empower staff to take ownership of safety procedures.</p>
         </div>
       </div>
 
       <!-- Accountability -->
-      <div class="culture-card rounded-xl group">
+      <div class="culture-card rounded-xl group" onclick="toggleCard(this)">
         <div class="card-cover">
-          <svg class="w-8 h-8 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-          <h4 class="font-bold text-sm uppercase tracking-wider">Accountability</h4>
+          <svg class="w-7 h-7 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          <h4 class="font-bold text-[13px] uppercase tracking-wider px-2">Accountability</h4>
         </div>
         <div class="card-reveal">
-          <h4 class="font-bold text-[#532A8C] text-xs uppercase mb-2">Transparency & Accountability</h4>
-          <p class="text-sm md:text-base leading-snug text-slate-600">Keep staff informed about safety performance. Clearly define roles and hold individuals accountable to maintain standards.</p>
+          <h4 class="font-bold text-[#532A8C] text-[11px] uppercase mb-1 tracking-tight">Transparency & Accountability</h4>
+          <p class="reveal-p text-slate-600">Keep staff informed about safety performance. Clearly define roles and hold individuals accountable to maintain standards.</p>
         </div>
       </div>
 
       <!-- Risk Communication -->
-      <div class="culture-card rounded-xl group">
+      <div class="culture-card rounded-xl group" onclick="toggleCard(this)">
         <div class="card-cover">
-          <svg class="w-8 h-8 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
-          <h4 class="font-bold text-sm uppercase tracking-wider">Risk Communication</h4>
+          <svg class="w-7 h-7 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+          <h4 class="font-bold text-[13px] uppercase tracking-wider px-2">Risk Communication</h4>
         </div>
         <div class="card-reveal">
-          <h4 class="font-bold text-[#532A8C] text-xs uppercase mb-2">Risk Communication</h4>
-          <p class="text-sm md:text-base leading-snug text-slate-600">Discuss hazards using clear language and explain rationale. Regular updates and active listening ensure all employees feel heard.</p>
+          <h4 class="font-bold text-[#532A8C] text-[11px] uppercase mb-1 tracking-tight">Risk Communication</h4>
+          <p class="reveal-p text-slate-600">Discuss hazards using clear language and explain rationale. Regular updates and active listening ensure all employees feel heard.</p>
         </div>
       </div>
 
     </div>
   </div>
+
+  <script>
+    function toggleCard(element) {
+      if (element.classList.contains('is-active')) {
+        element.classList.remove('is-active');
+      } else {
+        document.querySelectorAll('.culture-card').forEach(card => card.classList.remove('is-active'));
+        element.classList.add('is-active');
+      }
+    }
+    document.addEventListener('touchstart', function() {}, {passive: true});
+  </script>
 
 </body>
 </html>
